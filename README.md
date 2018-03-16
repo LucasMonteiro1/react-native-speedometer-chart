@@ -23,7 +23,7 @@ yarn add react-native-speedometer-chart
 | size |  200 | number | no | Chart size |
 | style | {} | object | no | Additional style |
 
-## Usage
+## Basic Usage
 
 ```javascript
 import React, { Component } from 'react';
@@ -37,6 +37,25 @@ export default class Main extends Component {
   }
 }
 ```
+
+## Examples
+
+```javascript
+  <Speedometer value={25} off={100}/>
+```
+![25%](docs/image2.png?raw=true "25% of value")
+```javascript
+  <Speedometer value={50} off={100}/>
+```
+![50%](docs/image1.png?raw=true "50% of value")
+```javascript
+  <Speedometer value={75} off={100}/>
+```
+![75%](docs/image3.png?raw=true "75% of value")
+```javascript
+  <Speedometer value={100} off={100}/>
+```
+![100%](docs/image4.png?raw=true "100% of value")
 
 ## License
 MIT
