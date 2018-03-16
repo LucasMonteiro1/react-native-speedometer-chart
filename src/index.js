@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Speedometer = ({ size, outerColor, internalColor, value, off, style }) => {
   const styles = getStyles(size);
   const degreesValue = (value > off) ? off : value;
-  const degrees = ((degreesValue * 180) / off) - 90;
+  const degrees = ((degreesValue * 180) / ((off === 0) ? 1 : off)) - 90;
   const degressStyle = {
     backgroundColor: internalColor,
     transform: [{ translateX: size / 4 }, { rotate: `${degrees}deg` }, { translateX: (size / 4 * -1) }],
