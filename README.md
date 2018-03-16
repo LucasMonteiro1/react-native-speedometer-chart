@@ -6,11 +6,10 @@ Speedometer Chart component for React Native
 
 ## Installation
 
-```console
+```
 npm install --save react-native-speedometer-chart
 ```
-or
-```console
+```
 yarn add react-native-speedometer-chart
 ```
 

@@ -67,3 +67,5 @@ const getStyles = (size) => ({
     borderRadius: size / 2,
   },
 });
+
+export default Speedometer;
