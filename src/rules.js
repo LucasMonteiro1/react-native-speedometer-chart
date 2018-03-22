@@ -30,4 +30,13 @@ export const getStyles = (size) => ({
     borderBottomRightRadius: 0,
     borderRadius: size / 2,
   },
+  labelsView: {
+    flexDirection: 'row',
+  },
+  initialLabel: {
+    flex: 1,
+  },
+  finalLabel: {
+    flex: 0,
+  },
 });

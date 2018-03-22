@@ -3,39 +3,62 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { getStyles } from './rules';
 
-const Speedometer = ({ size, outerColor, internalColor, value, off, style, text, textStyle, textVisible }) => {
+const Speedometer = ({ value, totalValue, size, outerColor, internalColor, style, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle }) => {
   const styles = getStyles(size);
-  const degreesValue = (value > off) ? off : value;
-  const degrees = ((degreesValue * 180) / ((off === 0) ? 1 : off)) - 90;
+  const degreesValue = (value > totalValue) ? totalValue : value;
+  const percentValue = parseFloat(Number((value * 100) / totalValue).toFixed(2));
+  const degrees = ((degreesValue * 180) / ((totalValue === 0) ? 1 : totalValue)) - 90;
   const degressStyle = {
     backgroundColor: internalColor,
     transform: [{ translateX: size / 4 }, { rotate: `${degrees}deg` }, { translateX: (size / 4 * -1) }],
   };
 
-  const textElement = (textVisible) ? (
+  const percentElement = (showPercent) ? (
+    <Text style={[percentStyle]} numberOfLines={1}>{percentValue}%</Text>
+  ) : null;
+
+  const textElement = ((showText) && (text)) ? (
     <Text style={textStyle} numberOfLines={1}>{text}</Text>
   ) : null;
 
+  const labelsElement = (showLabels) ? (
+    <View style={[styles.labelsView, { width: size }]}>
+      <Text style={[styles.initialLabel, labelStyle]} numberOfLines={1}>0</Text>
+      <Text style={[styles.finalLabel, labelStyle]} numberOfLines={1}>{totalValue}</Text>
+    </View>
+  ) : null;
+
   return (
-    <View style={[styles.outerCircle, { backgroundColor: outerColor }, style]}>
-      <View style={[styles.halfCircle, degressStyle]}/>
-      <View style={styles.innerCircle}>
-        {textElement}
+    <View style={style}>
+      <View style={[styles.outerCircle, { backgroundColor: outerColor }]}>
+        <View style={[styles.halfCircle, degressStyle]}/>
+        <View style={styles.innerCircle}>
+          {percentElement}
+          {textElement}
+        </View>
       </View>
+      {labelsElement}
     </View>
   );
 };
 
 Speedometer.propTypes = {
   value: PropTypes.number.isRequired,
-  off: PropTypes.number.isRequired,
+  totalValue: PropTypes.number.isRequired,
   size: PropTypes.number,
   outerColor: PropTypes.string,
   internalColor: PropTypes.string,
   style: PropTypes.object,
-  text: PropTypes.string,
+  showText: PropTypes.bool,
+  text: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   textStyle: PropTypes.object,
-  textVisible: PropTypes.bool,
+  showLabels: PropTypes.bool,
+  labelStyle: PropTypes.object,
+  showPercent: PropTypes.bool,
+  percentStyle: PropTypes.object,
 };
 
 Speedometer.defaultProps = {
@@ -43,9 +66,13 @@ Speedometer.defaultProps = {
   outerColor: '#e6e6e6',
   internalColor: '#2eb82e',
   style: {},
+  showText: false,
   text: '',
   textStyle: {},
-  textVisible: false,
+  showLabels: false,
+  labelStyle: {},
+  showPercent: false,
+  percentStyle: {},
 };
 
 export default Speedometer;

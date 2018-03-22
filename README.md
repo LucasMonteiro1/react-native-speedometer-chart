@@ -16,12 +16,20 @@ yarn add react-native-speedometer-chart
 ## Props
 | Prop | Default | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| value | none | number | yes | Value to be painted |
-| off | none | number | yes | Total value |
-| internalColor | #2eb82e | string | no | Value color |
-| outerColor | #e6e6e6 | string | no | Off color |
-| size |  200 | number | no | Chart size |
+| value | none | number | `yes` | Value to be painted |
+| totalValue | none | number | `yes` | Total value |
+| size | 200 | number | no | Chart size |
+| outerColor | #e6e6e6 | string | no | `value` color |
+| internalColor | #2eb82e | string | no | `totalValue` color |
 | style | {} | object | no | Additional style |
+| showText | false | bool | no | Show center text |
+| text | '' | string/number | no | Center text |
+| textStyle | {} | object | no | Center text style |
+| showLabels | false | bool | no | Show labels |
+| labelStyle | {} | object | no | Label style |
+| showPercent | false | bool | no | Show center percent |
+| percentStyle | {} | object | no | Percent style |
+
 
 ## Basic Usage
 
@@ -32,7 +40,7 @@ import Speedometer from 'react-native-speedometer-chart';
 export default class Main extends Component {
   render() {
     return (
-      <Speedometer value={50} off={100}/>
+      <Speedometer value={50} totalValue={100}/>
     );
   }
 }
@@ -41,21 +49,38 @@ export default class Main extends Component {
 ## Examples
 
 ```javascript
-  <Speedometer value={25} off={100}/>
+  <Speedometer value={25} totalValue={100}/>
 ```
 ![25%](docs/image2.png?raw=true "25% of value")
 ```javascript
-  <Speedometer value={50} off={100}/>
+  <Speedometer value={50} totalValue={100}/>
 ```
 ![50%](docs/image1.png?raw=true "50% of value")
 ```javascript
-  <Speedometer value={75} off={100}/>
+  <Speedometer value={75} totalValue={100}/>
 ```
 ![75%](docs/image3.png?raw=true "75% of value")
 ```javascript
-  <Speedometer value={100} off={100}/>
+  <Speedometer value={100} totalValue={100}/>
 ```
 ![100%](docs/image4.png?raw=true "100% of value")
+```javascript
+  <Speedometer
+    value={50}
+    maxValue={150}
+    size={250}
+    outerColor="#d3d3d3"
+    internalColor="#ff0000"
+    showText
+    text="50.00"
+    textStyle={{ color: 'green' }}
+    showLabels
+    labelStyle={{ color: 'blue' }}
+    showPercent
+    percentStyle={{ color: 'red' }}
+  />
+```
+![Total usage](docs/image5.png?raw=true "total usage")
 
 ## License
 MIT
