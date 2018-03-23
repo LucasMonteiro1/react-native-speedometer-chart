@@ -6,7 +6,7 @@ import { getStyles } from './rules';
 const Speedometer = ({ value, totalValue, size, outerColor, internalColor, style, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle }) => {
   const styles = getStyles(size);
   const degreesValue = (value > totalValue) ? totalValue : value;
-  const percentValue = parseFloat(Number((value * 100) / totalValue).toFixed(2));
+  const percentValue = parseInt(String((value * 100) / totalValue).split('.')[0]);
   const degrees = ((degreesValue * 180) / ((totalValue === 0) ? 1 : totalValue)) - 90;
   const degressStyle = {
     backgroundColor: internalColor,
