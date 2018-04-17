@@ -67,7 +67,7 @@ export default class Main extends Component {
 ```javascript
   <Speedometer
     value={50}
-    maxValue={150}
+    totalValue={150}
     size={250}
     outerColor="#d3d3d3"
     internalColor="#ff0000"
