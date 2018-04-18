@@ -14,11 +14,11 @@ const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internal
   };
 
   const percentElement = (showPercent) ? (
-    <Text style={[percentStyle]} numberOfLines={1}>{percentValue}%</Text>
+    <Text style={[{ backgroundColor: innerColor }, percentStyle]} numberOfLines={1}>{percentValue}%</Text>
   ) : null;
 
   const textElement = ((showText) && (text)) ? (
-    <Text style={textStyle} numberOfLines={1}>{text}</Text>
+    <Text style={[{ backgroundColor: innerColor }, textStyle]} numberOfLines={1}>{text}</Text>
   ) : null;
 
   const labelsElement = (showLabels) ? (
@@ -32,7 +32,7 @@ const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internal
     <View style={style}>
       <View style={[styles.outerCircle, { backgroundColor: outerColor }]}>
         <View style={[styles.halfCircle, degressStyle]}/>
-        <View style={styles.innerCircle, { backgroundColor: innerColor }}>
+        <View style={[styles.innerCircle, { backgroundColor: innerColor }]}>
           {percentElement}
           {textElement}
         </View>
