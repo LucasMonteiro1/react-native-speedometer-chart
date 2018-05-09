@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { getStyles } from './rules';
 
-const Speedometer = ({ value, totalValue, size, outerColor, internalColor, style, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle }) => {
+const Speedometer = ({ value, totalValue, size, outerColor, internalColor, style, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle, innerCircleStyle }) => {
   const styles = getStyles(size);
   const degreesValue = (value > totalValue) ? totalValue : value;
   const percentValue = parseInt(String((value * 100) / totalValue).split('.')[0]);
@@ -32,7 +32,7 @@ const Speedometer = ({ value, totalValue, size, outerColor, internalColor, style
     <View style={style}>
       <View style={[styles.outerCircle, { backgroundColor: outerColor }]}>
         <View style={[styles.halfCircle, degressStyle]}/>
-        <View style={styles.innerCircle}>
+        <View style={[styles.innerCircle, innerCircleStyle]}>
           {percentElement}
           {textElement}
         </View>
@@ -49,6 +49,7 @@ Speedometer.propTypes = {
   outerColor: PropTypes.string,
   internalColor: PropTypes.string,
   style: PropTypes.object,
+  innerCircleStyle: PropTypes.object,
   showText: PropTypes.bool,
   text: PropTypes.oneOfType([
     PropTypes.string,
@@ -66,6 +67,7 @@ Speedometer.defaultProps = {
   outerColor: '#e6e6e6',
   internalColor: '#2eb82e',
   style: {},
+  innerCircleStyle: {},
   showText: false,
   text: '',
   textStyle: {},
