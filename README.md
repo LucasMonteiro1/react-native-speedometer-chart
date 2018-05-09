@@ -22,7 +22,6 @@ yarn add react-native-speedometer-chart
 | outerColor | #e6e6e6 | string | no | `value` color |
 | internalColor | #2eb82e | string | no | `totalValue` color |
 | style | {} | object | no | Additional style |
-| innerCircleStyle | {} | object | no | Style for inner circle |
 | showText | false | bool | no | Show center text |
 | text | '' | string/number | no | Center text |
 | textStyle | {} | object | no | Center text style |
