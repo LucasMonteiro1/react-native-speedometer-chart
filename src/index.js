@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { getStyles } from './rules';
 
-const Speedometer = ({ value, totalValue, size, outerColor, internalColor, style, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle }) => {
+const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internalColor, style, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle }) => {
   const styles = getStyles(size);
   const degreesValue = (value > totalValue) ? totalValue : value;
   const percentValue = parseInt(String((value * 100) / totalValue).split('.')[0]);
@@ -14,11 +14,11 @@ const Speedometer = ({ value, totalValue, size, outerColor, internalColor, style
   };
 
   const percentElement = (showPercent) ? (
-    <Text style={[percentStyle]} numberOfLines={1}>{percentValue}%</Text>
+    <Text style={[{ backgroundColor: innerColor }, percentStyle]} numberOfLines={1}>{percentValue}%</Text>
   ) : null;
 
   const textElement = ((showText) && (text)) ? (
-    <Text style={textStyle} numberOfLines={1}>{text}</Text>
+    <Text style={[{ backgroundColor: innerColor }, textStyle]} numberOfLines={1}>{text}</Text>
   ) : null;
 
   const labelsElement = (showLabels) ? (
@@ -32,7 +32,7 @@ const Speedometer = ({ value, totalValue, size, outerColor, internalColor, style
     <View style={style}>
       <View style={[styles.outerCircle, { backgroundColor: outerColor }]}>
         <View style={[styles.halfCircle, degressStyle]}/>
-        <View style={styles.innerCircle}>
+        <View style={[styles.innerCircle, { backgroundColor: innerColor }]}>
           {percentElement}
           {textElement}
         </View>
@@ -47,6 +47,7 @@ Speedometer.propTypes = {
   totalValue: PropTypes.number.isRequired,
   size: PropTypes.number,
   outerColor: PropTypes.string,
+  innerColor: PropTypes.string,
   internalColor: PropTypes.string,
   style: PropTypes.object,
   showText: PropTypes.bool,
@@ -64,6 +65,7 @@ Speedometer.propTypes = {
 Speedometer.defaultProps = {
   size: 200,
   outerColor: '#e6e6e6',
+  innerColor: '#ffffff',
   internalColor: '#2eb82e',
   style: {},
   showText: false,

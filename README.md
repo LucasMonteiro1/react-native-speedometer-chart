@@ -19,6 +19,7 @@ yarn add react-native-speedometer-chart
 | value | none | number | `yes` | Value to be painted |
 | totalValue | none | number | `yes` | Total value |
 | size | 200 | number | no | Chart size |
+| innerColor | #ffffff | string | no | `value` color |
 | outerColor | #e6e6e6 | string | no | `value` color |
 | internalColor | #2eb82e | string | no | `totalValue` color |
 | style | {} | object | no | Additional style |
@@ -67,7 +68,7 @@ export default class Main extends Component {
 ```javascript
   <Speedometer
     value={50}
-    maxValue={150}
+    totalValue={150}
     size={250}
     outerColor="#d3d3d3"
     internalColor="#ff0000"
