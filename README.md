@@ -30,6 +30,9 @@ yarn add react-native-speedometer-chart
 | labelStyle | {} | object | no | Label style |
 | showPercent | false | bool | no | Show center percent |
 | percentStyle | {} | object | no | Percent style |
+| innerCircleStyle | null | object | no | |
+| outerCircleStyle | null | object | no | |
+| halfCircleStyle | null | object | no | |
 
 
 ## Basic Usage
