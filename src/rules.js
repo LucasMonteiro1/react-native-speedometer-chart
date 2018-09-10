@@ -1,4 +1,4 @@
-export const getStyles = (size) => ({
+export const getStyles = (size, percent = 0.5) => ({
   outerCircle: {
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -13,8 +13,8 @@ export const getStyles = (size) => ({
     justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: '#fff',
-    width: size * 0.5,
-    height: (size / 2) * 0.5,
+    width: size * percent,
+    height: (size / 2) * percent,
     borderTopLeftRadius: size / 2,
     borderTopRightRadius: size / 2,
     paddingLeft: 3,

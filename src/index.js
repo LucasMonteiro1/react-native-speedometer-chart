@@ -3,8 +3,8 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { getStyles } from './rules';
 
-const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internalColor, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle }) => {
-  const styles = getStyles(size);
+const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internalColor, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle, percentSize }) => {
+  const styles = getStyles(size, percentSize);
   const degreesValue = (value > totalValue) ? totalValue : value;
   const percentValue = parseInt(String((value * 100) / totalValue).split('.')[0]);
   const degrees = ((degreesValue * 180) / ((totalValue === 0) ? 1 : totalValue)) - 90;
@@ -60,9 +60,10 @@ Speedometer.propTypes = {
   labelStyle: PropTypes.object,
   showPercent: PropTypes.bool,
   percentStyle: PropTypes.object,
-  innerCircleStyle: PropTypes.object, 
+  innerCircleStyle: PropTypes.object,
   outerCircleStyle: PropTypes.object,
   halfCircleStyle: PropTypes.object,
+  percentSize: PropTypes.number,
 };
 
 Speedometer.defaultProps = {
@@ -78,6 +79,7 @@ Speedometer.defaultProps = {
   labelStyle: {},
   showPercent: false,
   percentStyle: {},
+  percentSize: 0.5,
 };
 
 export default Speedometer;

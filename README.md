@@ -33,6 +33,7 @@ yarn add react-native-speedometer-chart
 | innerCircleStyle | null | object | no | |
 | outerCircleStyle | null | object | no | |
 | halfCircleStyle | null | object | no | |
+| percentSize | 0.5 | number | no | |
 
 
 ## Basic Usage
