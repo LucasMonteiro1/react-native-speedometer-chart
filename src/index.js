@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import { getStyles } from './rules';
+import { getStyles, getColorPointIndicator } from './rules';
 
-const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internalColor, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle, percentSize }) => {
+const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internalColor, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle, percentSize, showIndicator, indicatorColor }) => {
   const styles = getStyles(size, percentSize);
   const degreesValue = (value > totalValue) ? totalValue : value;
   const percentValue = parseInt(String((value * 100) / totalValue).split('.')[0]);
@@ -11,6 +11,10 @@ const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internal
   const degressStyle = {
     backgroundColor: internalColor,
     transform: [{ translateX: size / 4 }, { rotate: `${degrees}deg` }, { translateX: (size / 4 * -1) }],
+  };
+
+  const degressStyleIndicator = {
+    transform: [{ translateX: (2 + size) / 4 }, { rotate: `${((180 / 100) * degreesValue)}deg` }, { translateX: ( (2 + size) / 4 * -1) }],
   };
 
   const percentElement = (showPercent) ? (
@@ -25,6 +29,13 @@ const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internal
     <View style={[styles.labelsView, { width: size }]}>
       <Text style={[styles.initialLabel, labelStyle]} numberOfLines={1}>0</Text>
       <Text style={[styles.finalLabel, labelStyle]} numberOfLines={1}>{totalValue}</Text>
+    </View>
+  ) : null;
+
+  // TODO: zIndex com as labels irem por cima dos valores
+  const indicadorElement = (showIndicator) ? (
+    <View style={[degressStyleIndicator, styles.indicator, { width: 2 + size / 2, backgroundColor: indicatorColor }]}>
+      <View style={[styles.pointIndicator, { backgroundColor: getColorPointIndicator(indicatorColor)}]}/>
     </View>
   ) : null;
 
@@ -64,6 +75,8 @@ Speedometer.propTypes = {
   outerCircleStyle: PropTypes.object,
   halfCircleStyle: PropTypes.object,
   percentSize: PropTypes.number,
+  showIndicator: PropTypes.bool,
+  indicatorColor: PropTypes.string,
 };
 
 Speedometer.defaultProps = {
@@ -80,6 +93,8 @@ Speedometer.defaultProps = {
   showPercent: false,
   percentStyle: {},
   percentSize: 0.5,
+  showIndicator: false,
+  indicatorColor: 'lightgrey'
 };
 
 export default Speedometer;
