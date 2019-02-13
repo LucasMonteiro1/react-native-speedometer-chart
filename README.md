@@ -34,7 +34,8 @@ yarn add react-native-speedometer-chart
 | outerCircleStyle | null | object | no | |
 | halfCircleStyle | null | object | no | |
 | percentSize | 0.5 | number | no | |
-
+| showIndicator | false | bool | no | Show a needle |
+| indicatorColor | #808080 | string | no | `value` color |
 
 ## Basic Usage
 
