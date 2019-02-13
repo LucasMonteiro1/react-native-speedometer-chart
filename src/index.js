@@ -32,8 +32,7 @@ const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internal
     </View>
   ) : null;
 
-  // TODO: zIndex com as labels irem por cima dos valores
-  const indicadorElement = (showIndicator) ? (
+  const indicadorElement = ((!showText) && (!showPercent) && (showIndicator) && (totalValue)) ? (
     <View style={[degressStyleIndicator, styles.indicator, { width: 2 + size / 2, backgroundColor: indicatorColor }]}>
       <View style={[styles.pointIndicator, { backgroundColor: getColorPointIndicator(indicatorColor)}]}/>
     </View>
@@ -48,6 +47,7 @@ const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internal
           {textElement}
         </View>
       </View>
+      {indicadorElement}
       {labelsElement}
     </View>
   );
@@ -94,7 +94,7 @@ Speedometer.defaultProps = {
   percentStyle: {},
   percentSize: 0.5,
   showIndicator: false,
-  indicatorColor: 'lightgrey'
+  indicatorColor: 'grey'
 };
 
 export default Speedometer;
