@@ -88,5 +88,10 @@ export default class Main extends Component {
 ```
 ![Total usage](docs/image5.png?raw=true "total usage")
 
+```javascript
+  <Speedometer value={25} totalValue={100} showIndicator />
+```
+![](docs/image6.png?raw=true "Needle indicator")
+
 ## License
 MIT
