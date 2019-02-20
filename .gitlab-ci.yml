@@ -4,10 +4,12 @@ stages:
   - prepare
   - publish
 
+before_script:
+  - npm install
+
 prepare:
   stage: prepare
   script:
-    - npm install
     - npm run lint
 
 publish:
@@ -18,6 +20,4 @@ publish:
     - npm install -g npm-login-cli
     - npm-login-cli https://registry.npmjs.org/ $NPM_USER $NPM_PASSWORD $NPM_EMAIL
     - npm whoami
-    - npm install
-    - npm run build
     - npm publish --access public
