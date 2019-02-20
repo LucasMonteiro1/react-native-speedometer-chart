@@ -1,0 +1,23 @@
+image: node:latest
+
+stages:
+  - prepare
+  - publish
+
+prepare:
+  stage: prepare
+  script:
+    - npm install
+    - npm run lint
+
+publish:
+  stage: publish
+  only:
+    - master
+  script:
+    - npm install -g npm-login-cli
+    - npm-login-cli https://registry.npmjs.org/ $NPM_USER $NPM_PASSWORD $NPM_EMAIL
+    - npm whoami
+    - npm install
+    - npm run build
+    - npm publish --access public

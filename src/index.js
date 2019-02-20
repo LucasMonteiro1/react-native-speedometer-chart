@@ -34,7 +34,7 @@ const Speedometer = ({ value, totalValue, size, outerColor, innerColor, internal
 
   const indicadorElement = ((!showText) && (!showPercent) && (showIndicator) && (totalValue)) ? (
     <View style={[degressStyleIndicator, styles.indicator, { width: 2 + size / 2, backgroundColor: indicatorColor }]}>
-      <View style={[styles.pointIndicator, { backgroundColor: getColorPointIndicator(indicatorColor)}]}/>
+      <View style={[styles.pointIndicator, { backgroundColor: getColorPointIndicator(indicatorColor) }]}/>
     </View>
   ) : null;
 

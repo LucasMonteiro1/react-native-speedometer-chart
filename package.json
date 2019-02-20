@@ -1,6 +1,6 @@
 {
   "name": "react-native-speedometer-chart",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "Speedometer Chart component for React Native",
   "main": "src/index.js",
   "author": "Lucas Monteiro",
@@ -26,16 +26,17 @@
     "ios"
   ],
   "peerDependencies": {
-    "react": "16.2.0"
+    "react": "16.8.2"
   },
   "devDependencies": {
-    "eslint": "^4.18.1",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-react": "^7.7.0",
-    "react": "16.2.0",
-    "react-native": "^0.54.2"
+    "eslint": "^5.14.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-react": "^7.12.4",
+    "react": "16.8.2",
+    "react-native": "^0.58.5"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "color": "^3.1.0",
+    "prop-types": "^15.7.2"
   }
 }
