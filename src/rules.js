@@ -1,5 +1,7 @@
+import color from 'color';
+
 export const getStyles = (size, percent = 0.5) => ({
-  outerCircle: {
+  outerCircle: { 
     justifyContent: 'flex-end',
     alignItems: 'center',
     width: size,
@@ -39,4 +41,17 @@ export const getStyles = (size, percent = 0.5) => ({
   finalLabel: {
     flex: 0,
   },
+  indicator: {
+    height: 4,
+    zIndex: 1000,
+    justifyContent: 'center',
+  },
+  pointIndicator: {
+    borderRadius: 50,
+    width: 15,
+    height: 15,
+    alignSelf: 'flex-end',
+  },
 });
+
+export const getColorPointIndicator = (cor) => color(cor).darken(.2);
