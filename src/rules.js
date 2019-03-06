@@ -1,6 +1,4 @@
-import color from 'color';
-
-export const getStyles = (size, percent = 0.5) => ({
+export const getStyles = ({ size, percentSize, internalColor, innerColor, outerColor }, degrees) => ({
   outerCircle: {
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -9,18 +7,19 @@ export const getStyles = (size, percent = 0.5) => ({
     borderTopLeftRadius: size / 2,
     borderTopRightRadius: size / 2,
     overflow: 'hidden',
+    backgroundColor: outerColor,
   },
   innerCircle: {
     overflow: 'hidden',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    width: size * percent,
-    height: (size / 2) * percent,
+    width: size * percentSize,
+    height: (size / 2) * percentSize,
     borderTopLeftRadius: size / 2,
     borderTopRightRadius: size / 2,
     paddingLeft: 3,
     paddingRight: 3,
+    backgroundColor: innerColor,
   },
   halfCircle: {
     position: 'absolute',
@@ -31,9 +30,12 @@ export const getStyles = (size, percent = 0.5) => ({
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
     borderRadius: size / 2,
+    backgroundColor: internalColor,
+    transform: [{ translateX: size / 4 }, { rotate: `${degrees}deg` }, { translateX: (size / 4 * -1) }],
   },
   labelsView: {
     flexDirection: 'row',
+    width: size,
   },
   initialLabel: {
     flex: 1,
@@ -41,19 +43,10 @@ export const getStyles = (size, percent = 0.5) => ({
   finalLabel: {
     flex: 0,
   },
-  indicator: {
-    height: 4,
-    zIndex: 1000,
-    justifyContent: 'center',
+  percentText: {
+    backgroundColor: innerColor,
   },
-  pointIndicator: {
-    borderRadius: 50,
-    width: 15,
-    height: 15,
-    alignSelf: 'flex-end',
+  text: {
+    backgroundColor: innerColor,
   },
 });
-
-export const getColorPointIndicator = (cor) => {
-  return color(cor).darken(0.2).hex();
-};
