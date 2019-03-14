@@ -1,6 +1,6 @@
 {
   "name": "react-native-speedometer-chart",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Speedometer Chart component for React Native",
   "main": "src/index.js",
   "author": "Lucas Monteiro",

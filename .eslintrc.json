@@ -14,6 +14,11 @@
     "eslint:recommended",
     "plugin:react/recommended"
   ],
+  "settings": {
+    "react": {
+      "version": "16.8.2"
+    }
+  },
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "semi": 2,

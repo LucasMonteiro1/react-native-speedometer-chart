@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { getStyles } from './rules';
 
 const Speedometer = (props) => {
-  const { value, totalValue, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle } = props;
+  const { value, totalValue, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle, showIndicator } = props;
 
   const percentValue = parseInt(String((value * 100) / totalValue).split('.')[0]);
   const degreesValue = (value > totalValue) ? totalValue : value;
   const degrees = ((degreesValue * 180) / ((totalValue === 0) ? 1 : totalValue)) - 90;
 
-  const styles = getStyles(props, degrees);
+  const styles = getStyles(props, degrees, degreesValue);
 
   const percentElement = (showPercent) ? (
     <Text style={[styles.percentText, percentStyle]} numberOfLines={1}>{percentValue}%</Text>
@@ -27,6 +27,12 @@ const Speedometer = (props) => {
     </View>
   ) : null;
 
+  const indicadorElement = ((!showText) && (!showPercent) && (showIndicator) && (totalValue)) ? (
+    <View style={styles.indicator}>
+      <View style={styles.pointIndicator} />
+    </View>
+  ) : null;
+
   return (
     <View style={style}>
       <View style={[styles.outerCircle, outerCircleStyle]}>
@@ -36,6 +42,7 @@ const Speedometer = (props) => {
           {textElement}
         </View>
       </View>
+      {indicadorElement}
       {labelsElement}
     </View>
   );
@@ -84,6 +91,8 @@ Speedometer.propTypes = {
     PropTypes.arrayOf(PropTypes.object),
   ]),
   percentSize: PropTypes.number,
+  showIndicator: PropTypes.bool,
+  indicatorColor: PropTypes.string,
 };
 
 Speedometer.defaultProps = {
@@ -103,6 +112,8 @@ Speedometer.defaultProps = {
   outerCircleStyle: {},
   halfCircleStyle: {},
   percentSize: 0.5,
+  showIndicator: false,
+  indicatorColor: 'grey'
 };
 
 export default Speedometer;
