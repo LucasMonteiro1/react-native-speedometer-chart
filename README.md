@@ -13,6 +13,11 @@ npm install --save react-native-speedometer-chart
 yarn add react-native-speedometer-chart
 ```
 
+## Try it out
+You can try out the [Speedometer Chart Example
+](https://expo.io/@lucasmonteiro1/speedometer-chart-example) app to get a tease of the functionalities of this lib.
+
+
 ## Props
 | Prop | Default | Type | Required | Description |
 | --- | --- | --- | --- | --- |
