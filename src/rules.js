@@ -55,7 +55,7 @@ export const getStyles = ({ size, percentSize, internalColor, innerColor, outerC
     height: 4,
     zIndex: 1000,
     justifyContent: 'center',
-    transform: [{ translateX: (2 + size) / 4 }, { rotate: `${((180 / 100) * degreesValue)}deg` }, { translateX: ( (2 + size) / 4 * -1) }],
+    transform: [{ translateX: (2 + size) / 4 }, { rotate: `${(degrees + 90)}deg` }, { translateX: ( (2 + size) / 4 * -1) }],
     width: 2 + size / 2,
     backgroundColor: indicatorColor,
   },
