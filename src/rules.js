@@ -64,6 +64,7 @@ export const getStyles = ({ size, percentSize, internalColor, innerColor, outerC
     width: 15,
     height: 15,
     alignSelf: 'flex-end',
+    transform: [{ translateX: 5 }],
     backgroundColor: color(indicatorColor).darken(0.2).hex(),
   },
 });
