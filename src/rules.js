@@ -1,6 +1,6 @@
 import color from 'color';
 
-export const getStyles = ({ size, percentSize, internalColor, innerColor, outerColor, indicatorColor }, degrees, degreesValue) => ({
+export const getStyles = ({ size, percentSize, internalColor, innerColor, outerColor, indicatorColor, showIndicator }, degrees, degreesValue) => ({
   outerCircle: {
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -55,15 +55,22 @@ export const getStyles = ({ size, percentSize, internalColor, innerColor, outerC
     height: 4,
     zIndex: 1000,
     justifyContent: 'center',
-    transform: [{ translateX: (2 + size) / 4 }, { rotate: `${((180 / 100) * degreesValue)}deg` }, { translateX: ( (2 + size) / 4 * -1) }],
-    width: 2 + size / 2,
+    transform: [{ translateX: size / 4 }, { rotate: `${(degrees + 90)}deg` }, { translateX: (size / 4 * -1) }],
+    width: size / 2,
     backgroundColor: indicatorColor,
+    position: 'absolute',
+    left: 0,
+    top: (size / 2) - 2,
   },
   pointIndicator: {
     borderRadius: 50,
     width: 15,
     height: 15,
     alignSelf: 'flex-end',
+    transform: [{ translateX: 7.5 }],
     backgroundColor: color(indicatorColor).darken(0.2).hex(),
   },
+  content: (showIndicator) ? {
+    marginBottom: 10,
+  } : null,
 });
