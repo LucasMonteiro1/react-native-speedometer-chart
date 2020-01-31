@@ -34,7 +34,7 @@ const Speedometer = (props) => {
   ) : null;
 
   return (
-    <View style={style}>
+    <View style={[styles.content, style]}>
       <View style={[styles.outerCircle, outerCircleStyle]}>
         <View style={[styles.halfCircle, halfCircleStyle]}/>
         <View style={[styles.innerCircle, innerCircleStyle]}>
