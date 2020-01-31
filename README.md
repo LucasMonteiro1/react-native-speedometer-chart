@@ -1,5 +1,5 @@
 # React Native Speedometer Chart
-[![npm version](https://badge.fury.io/js/react-native-speedometer-chart.svg)](https://badge.fury.io/js/react-native-speedometer-chart) [![npm downloads](https://img.shields.io/npm/dt/react-native-speedometer-chart.svg)](https://npm-stat.com/charts.html?package=react-native-speedometer-chart)  
+[![npm version](https://badge.fury.io/js/react-native-speedometer-chart.svg)](https://badge.fury.io/js/react-native-speedometer-chart) [![npm downloads](https://img.shields.io/npm/dt/react-native-speedometer-chart.svg)](https://npm-stat.com/charts.html?package=react-native-speedometer-chart) [![Publish Package](https://github.com/LucasMonteiro1/react-native-speedometer-chart/workflows/Publish%20Package/badge.svg?branch=master&event=push)](https://github.com/LucasMonteiro1/react-native-speedometer-chart/actions)   
 [![NPM](https://nodei.co/npm/react-native-speedometer-chart.png?downloads=true)](https://nodei.co/npm/react-native-speedometer-chart/)
 ---
 Speedometer Chart component for React Native
@@ -94,7 +94,11 @@ export default class Main extends Component {
 ![Total usage](docs/image5.png?raw=true "total usage")
 
 ```javascript
+  <Speedometer value={0} totalValue={100} showIndicator />
   <Speedometer value={25} totalValue={100} showIndicator />
+  <Speedometer value={50} totalValue={100} showIndicator />
+  <Speedometer value={75} totalValue={100} showIndicator />
+  <Speedometer value={100} totalValue={100} showIndicator />
 ```
 ![](docs/image6.png?raw=true "Needle indicator")
 
