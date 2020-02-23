@@ -33,6 +33,7 @@ You can try out the [Speedometer Chart Example
 | textStyle | {} | object | no | Center text style |
 | showLabels | false | bool | no | Show labels |
 | labelStyle | {} | object | no | Label style |
+| labelFormatter | number => number | func | no | Label formatter |
 | showPercent | false | bool | no | Show center percent |
 | percentStyle | {} | object | no | Percent style |
 | innerCircleStyle | null | object | no | |
@@ -87,6 +88,7 @@ export default class Main extends Component {
     textStyle={{ color: 'green' }}
     showLabels
     labelStyle={{ color: 'blue' }}
+    labelFormatter={number => `${number}%`}
     showPercent
     percentStyle={{ color: 'red' }}
   />
