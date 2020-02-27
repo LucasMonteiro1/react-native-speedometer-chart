@@ -38,12 +38,7 @@ export const getStyles = ({ size, percentSize, internalColor, innerColor, outerC
   labelsView: {
     flexDirection: 'row',
     width: size,
-  },
-  initialLabel: {
-    flex: 1,
-  },
-  finalLabel: {
-    flex: 0,
+    justifyContent: 'space-between'
   },
   percentText: {
     backgroundColor: innerColor,

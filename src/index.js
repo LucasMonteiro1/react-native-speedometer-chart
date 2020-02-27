@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getStyles } from './rules';
 
 const Speedometer = (props) => {
-  const { value, totalValue, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, showPercent, percentStyle, showIndicator } = props;
+  const { value, totalValue, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, labelTextStyle, labelFormatter, showPercent, percentStyle, showIndicator } = props;
 
   const percentValue = parseInt(String((value * 100) / totalValue).split('.')[0]);
   const degreesValue = (value > totalValue) ? totalValue : value;
@@ -21,9 +21,9 @@ const Speedometer = (props) => {
   ) : null;
 
   const labelsElement = (showLabels) ? (
-    <View style={styles.labelsView}>
-      <Text style={[styles.initialLabel, labelStyle]} numberOfLines={1}>0</Text>
-      <Text style={[styles.finalLabel, labelStyle]} numberOfLines={1}>{totalValue}</Text>
+    <View style={[styles.labelsView, labelStyle]}>
+      <Text style={labelTextStyle} numberOfLines={1}>{labelFormatter(0)}</Text>
+      <Text style={labelTextStyle} numberOfLines={1}>{labelFormatter(totalValue)}</Text>
     </View>
   ) : null;
 
@@ -73,6 +73,11 @@ Speedometer.propTypes = {
     PropTypes.object,
     PropTypes.arrayOf(PropTypes.object),
   ]),
+  labelFormatter: PropTypes.func,
+  labelTextStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.object),
+  ]),
   showPercent: PropTypes.bool,
   percentStyle: PropTypes.oneOfType([
     PropTypes.object,
@@ -106,6 +111,8 @@ Speedometer.defaultProps = {
   textStyle: {},
   showLabels: false,
   labelStyle: {},
+  labelFormatter: number => number,
+  labelTextStyle: {},
   showPercent: false,
   percentStyle: {},
   innerCircleStyle: {},
