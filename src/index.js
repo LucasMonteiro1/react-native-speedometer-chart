@@ -4,13 +4,19 @@ import PropTypes from 'prop-types';
 import { getStyles } from './rules';
 
 const Speedometer = (props) => {
-  const { value, totalValue, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, labelTextStyle, labelFormatter, showPercent, percentStyle, showIndicator } = props;
+  const { value, totalValue, style, innerCircleStyle, outerCircleStyle, halfCircleStyle, showText, text, textStyle, showLabels, labelStyle, labelTextStyle, labelFormatter, showPercent, percentStyle, showIndicator, indicatorValue } = props;
 
   const percentValue = parseInt(String((value * 100) / totalValue).split('.')[0]);
   const degreesValue = (value > totalValue) ? totalValue : value;
   const degrees = ((degreesValue * 180) / ((totalValue === 0) ? 1 : totalValue)) - 90;
 
-  const styles = getStyles(props, degrees, degreesValue);
+  const degressIndicatorValue = (indicatorValue > totalValue) ? totalValue : indicatorValue;
+  const degressIndicator =
+    (showIndicator && indicatorValue) ?
+      ((degressIndicatorValue * 180) / ((totalValue === 0) ? 1 : totalValue)) - 90
+      : degrees;
+
+  const styles = getStyles(props, degrees, degreesValue, degressIndicator);
 
   const percentElement = (showPercent) ? (
     <Text style={[styles.percentText, percentStyle]} numberOfLines={1}>{percentValue}%</Text>
@@ -36,7 +42,7 @@ const Speedometer = (props) => {
   return (
     <View style={[styles.content, style]}>
       <View style={[styles.outerCircle, outerCircleStyle]}>
-        <View style={[styles.halfCircle, halfCircleStyle]}/>
+        <View style={[styles.halfCircle, halfCircleStyle]} />
         <View style={[styles.innerCircle, innerCircleStyle]}>
           {percentElement}
           {textElement}
@@ -98,6 +104,7 @@ Speedometer.propTypes = {
   percentSize: PropTypes.number,
   showIndicator: PropTypes.bool,
   indicatorColor: PropTypes.string,
+  indicatorValue: PropTypes.number,
 };
 
 Speedometer.defaultProps = {
@@ -120,7 +127,8 @@ Speedometer.defaultProps = {
   halfCircleStyle: {},
   percentSize: 0.5,
   showIndicator: false,
-  indicatorColor: 'grey'
+  indicatorColor: 'grey',
+  indicatorValue: undefined
 };
 
 export default Speedometer;
