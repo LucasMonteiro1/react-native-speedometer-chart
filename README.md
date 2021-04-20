@@ -42,6 +42,7 @@ You can try out the [Speedometer Chart Example
 | percentSize | 0.5 | number | no | |
 | showIndicator | false | bool | no | Show a needle |
 | indicatorColor | #808080 | string | no | `value` color |
+| indicatorValue | undefined | number | no | Show a needle in diferrent position |
 
 ## Basic Usage
 
@@ -103,6 +104,23 @@ export default class Main extends Component {
   <Speedometer value={100} totalValue={100} showIndicator />
 ```
 ![](docs/image6.png?raw=true "Needle indicator")
+
+```javascript
+    <Speedometer
+        value={100}
+        totalValue={150}
+        showIndicator
+        indicatorValue={80}
+    />
+
+    <Speedometer
+        value={100}
+        totalValue={150}
+        showIndicator
+        indicatorValue={130}
+    />
+```
+![](docs/image7.png?raw=true "Needle indicator 80 130")
 
 ## License
 MIT
